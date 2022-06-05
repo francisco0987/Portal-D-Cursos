@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style>
+    .formata-link a {
+        text-decoration: none;
+    }
+
+    .formata-link a:active {
+        text-decoration: underline;
+    }
+
+    .reset-senha {
+        font-size: 0.8rem;
+    }
+</style>
+
+{% endblock head %}
+
+{% block titulo %}Login{% endblock titulo %}
+
+{% block conteudo %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-xl-8 col-lg-8 col-md-12">
+            <div class="d-flex justify-content-center">
+
+                <div class="formata-link" style="width: 70%">
+                    <a href="">LOGIN</a>
+                    <form action="{% url 'valida_login' %}" method="POST">{% csrf_token %}
+                        <input class="form-control border-bottom mb-4 mt-4" type="email" placeholder="Seu email" name="email">
+                        <input class="form-control border-bottom mb-4" type="password" placeholder="Sua senha" name="senha">
+                        <input class="form-control btn btn-primary mb-4" type="submit" value="ENTAR">
+                    </form>
+                    <div class="row">
+                        <div class="col-6">
+                            <!-- <a class="reset-senha" href="">ESQUECI MINHA SENHA</a> -->
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end"><a class="reset-senha" href="{% url 'cadastro' %}">FAZER CADASTRO</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-md-4 d-none d-xl-block d-xxl-block d-lg-block ">
+            <h1 class="display-5 m-0">D-Cursos</h1>
+            <p>
+                Aprenda do seu jeito,<br> onde você estiver.
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock conteudo %}

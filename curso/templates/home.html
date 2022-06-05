@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Home{% endblock titulo %}
+
+{% block nav %}
+
+    {% if not usuario_logado %}
+        <div>
+            <a href="{% url 'cadastro' %}" type="submit" class="btn btn-outline-primary">Cadastrar</a>
+            <a href="{% url 'login' %}" type="submit" class="btn btn-outline-primary">Login</a>
+        </div>
+    {% else %}
+    <div>
+        <a href="{% url 'sair' %}" type="submit" class="btn btn-outline-danger">Sair</a>
+    </div>
+    {% endif %}
+
+{% endblock nav %}
+
+{% block conteudo %}
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        
+        <div class="row">
+
+            {% for curso in cursos %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                    <div class="card shadow-sm">
+                        <h6 class="card-title p-2">{{ curso.nome }}</h6>
+                        <a href="{% url 'curso' curso.slug_curso %}">
+                            <img class="img-fluid" src="{{ curso.thumbnail.url }}" alt="{{ curso.nome }}">
+                        </a>
+                        <div class="card-body">
+                        <p class="card-text truncate-3l">{{ curso.descricao }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            
+                            <a href="{% url 'curso' curso.slug_curso %}" type="button" class="form-control btn btn-outline-primary">Acessar curso</a>
+ 
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock conteudo %}

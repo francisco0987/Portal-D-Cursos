@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Detalhe do curso{% endblock titulo %}
+
+{% block head %}
+    <style>
+        p.truncate-3l {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        }
+    </style>
+{% endblock head %}
+
+{% block nav %}
+
+    {% if usuario_logado %}
+        <div>
+            <a href="{% url 'sair' %}" type="submit" class="btn btn-outline-danger">Sair</a>
+        </div>
+    {% endif %}
+
+{% endblock nav %}
+
+{% block conteudo %}
+
+
+    <div class="container mt-3">
+        <div class="row">
+    
+            {% for aula in aulas %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                    <div class="card shadow-sm">
+                        <h6 class="card-title p-2">{{ aula.nome }}</h6>
+                        
+                        <div class="card-body">
+                            <video id="video-aulas" width="100%" controlslist="nodownload nofullscreen">
+                                <source src="{{ aula.aula.url }}" type="video/mp4">
+                            </video>
+                            <p class="card-text truncate-3l">{{ aula.descricao }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            
+                            <a href="{% url 'aula' aula.slug_aula %}" type="button" class="form-control btn btn-outline-primary">Assistir</a>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}        
+
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+
+    function configuraVideo(id) {
+        const video = document.getElementById(id)
+        video.oncontextmenu = () => false
+    }
+
+    configuraVideo('video-aulas')
+
+</script>
+
+{% endblock conteudo %}

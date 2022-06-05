@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.98.0">
+  <title>{% block titulo %}{% endblock titulo %}</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+      p.truncate-3l {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+  </style>
+
+  {% block head %}{% endblock head %}
+
+</head>
+
+<body>
+
+  <header>
+    
+    <nav class="navbar bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-white" href="{% url 'home' %}">D-Cursos</a>
+        {% block nav %}{% endblock nav %}
+      </div>
+    </nav>
+
+  </header>
+
+  <main>
+
+    {% block conteudo %}{% endblock conteudo %}
+    
+  </main>
+
+  <footer class="border-top fixed-bottom text-muted bg-light">
+    <div class="container">
+        <di class="row">
+            <div class="col-12 col-md-4 text-center text-md-left">
+                &copy; 2022  D-Cursos
+            </div>
+            <div class="col-12 col-md-4 text-center">
+                <a href="#" class="text-decoration-none text-dark">Política de Privacidade</a>
+            </div>
+            <div class="col-12 col-md-4 text-center text-md-right">
+                <a href="#" class="text-decoration-none text-dark">Administrar</a>
+            </div>
+        </di>
+    </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
